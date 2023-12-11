@@ -1,0 +1,119 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <meta charset="utf-8" /> 
+    <title>Etude des valeurs foncières 2022</title> 
+    <style>
+      #conteneur {
+         background-color: #f5f5dc; 
+         padding: 20px; 
+       }
+      p.titre {
+        font-size: 36px; 
+        font-weight: bold; 
+        text-align: center; 
+        font-family: Arial, sans-serif; 
+      }
+      p.intro {
+        font-size: 18px;
+        font-weight: normal;
+        text-align: center;
+        font-family: Georgia, serif;
+      }
+      p.auteur {
+      font-size: 13px;
+      text-align: center;
+      font-family: Georgia, serif;
+      }
+      h2.titre2 {
+        font-size: 25px; 
+        font-weight: bold; 
+        text-align: left; 
+        font-family: Arial, sans-serif; 
+      }
+      h3.titre3 {
+         font-size: 19px; 
+         font-weight: bold; 
+         text-align: left; 
+         font-family: Arial, sans-serif; 
+      }
+      #bandeau {
+        width: 100%;
+        height: 200px;
+        background-image: url("https://unsold.fr/static/content/images/city/paris.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      #graphique3 {
+          display :none;
+      }
+    </style>
+    </head> 
+    <body>   
+     <div id="bandeau"> </div>
+     <div id="conteneur">
+          <p class ="titre">Etude des valeurs foncières 2022</p>
+          <p class ="intro">Bonjour et bienvenue sur notre nouveau site. <br>
+          Laissez vous guider, et explorez le marché immobilier français de l'année 2022 avec nous !</p>
+     </div>
+      <hr />
+      <p class ="auteur">publié 08/05/2023, auteurs : Malo Leroy, Amélie Lambert et Laura Kundun. </p>
+      <br>
+     <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+      <h2 class ="titre2">Qui sommes-nous ?</h2>
+      <p align="left">Nous sommes trois élèves en école d'ingénieurs qui, dans le cadre d'un projet de fin de module en langage Python, 
+          avons du nous intéresser aux données de Demandes de Valeurs Foncières (DVF).  
+          Ces données contiennent des informations sur les transactions immobilières qui ont eu lieu au cours des cinq dernières années 
+          sur le territoire métropolitain et les DOM-TOM (à l'exception de l'Alsace, de la Moselle et de Mayotte), 
+          et sont issues d'actes notariés et d'informations cadastrales.</p>
+      <h2 class ="titre2">Nos objectifs</h2>
+      <p align="left">Nos objectifs vis à vis de ce projet sont multiples, </p>
+      <ul>
+        	<li align="left">Proposer une analyse pertinente de ces données.</li>
+        	<li align="left">Proposer une visualisation dynamique et interactive de ces données.</li>
+        	<li align="left">Consolider nos compétences actuelles en langage Python. </li>
+        	<li align="left">Développer de nouvelles compétences (HTML). </li>
+      </ul>
+      <h2 class ="titre2">Contenu </h2>
+       <ul>
+         <li align="left"><a href="#graphique1 #graphique3">Carte des valeurs foncières moyennes, par région ou département.</a></li>
+         <li align="left"><a href="#graphique2">Coût de la surface en m².</a></li>
+         <li align="left"><a href="#graphique4">Comparaison des départements en fonction de leur surface réelle, valeur foncière, surface terrain et région.</a></li>
+         <li align="left"><a href="#graphique5">Proportion des types de bien immobilier par région.</a></li>
+       </ul> <br>
+      <h3 class ="titre3">1. Carte de France des valeurs foncières moyennes </h3>
+      <label for="graphSelect" style="text-align: left;">Choisir la carte souhaitée :</label>
+      <select id="graphSelect" name="graphSelect" onchange="showGraph()">
+       <option value="graphique1">Carte des valeurs foncières moyennes, par région.</option>
+       <option value="graphique3">Carte des valeurs foncières moyennes, par département.</option>
+      </select>
+      <script>
+        function showGraph() {
+          var graphSelect = document.getElementById("graphSelect");
+          var selectedGraph = graphSelect.value;
+          var graph1 = document.getElementById("graphique1");
+          var graph2 = document.getElementById("graphique3");
+          if (selectedGraph == "graphique1") {
+            graph1.style.display = "block";
+            graph2.style.display = "none";
+          } else if (selectedGraph == "graphique3") {
+            graph1.style.display = "none";
+            graph2.style.display = "block";
+          } 
+        }
+     </script>
+      <div id="graphique1"> {{plot_html1|safe}}</div>
+      <div id="graphique3">{{plot_html3|safe}}</div>
+      <h3 class ="titre3">2. Coût de la surface en m².</h3>
+      <div id="graphique2">{{plot_html2|safe}}</div>
+      <h3 class ="titre3">3. Comparaison des départements en fonction de leur surface réelle, valeur foncière, surface terrain et région.</h3>
+      <div id="graphique4">{{plot_html4|safe}}</div>
+      <h3 class ="titre3">4. Proportion des types de bien immobilier par région.</h3>
+      <div id="graphique5">{{plot_html5|safe}}</div>
+
+      
+     </div>
+
+  </body> 
+</html> 
